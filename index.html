@@ -9,16 +9,16 @@
     :root {
       --bg-color: #050816;
       --card-color: #0b1020;
-      --accent: #4f46e5;
-      --accent-soft: rgba(79, 70, 229, 0.2);
-      --text-main: #e5e7eb;
+      --accent: #06b6d4; /* Updated to a sleek cyan for a cyber feel */
+      --accent-soft: rgba(6, 182, 212, 0.15);
+      --text-main: #f3f4f6;
       --text-muted: #9ca3af;
       --danger: #ef4444;
       --success: #22c55e;
       --border-soft: #1f2933;
-      --radius-lg: 18px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
-      --transition-fast: 0.25s ease;
+      --radius-lg: 16px;
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
+      --transition-fast: 0.3s ease;
     }
 
     * {
@@ -28,9 +28,8 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 70%);
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.6;
@@ -38,8 +37,13 @@
     }
 
     a {
-      color: inherit;
+      color: var(--accent);
       text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    
+    a:hover {
+      color: #67e8f9;
     }
 
     img {
@@ -51,7 +55,7 @@
     .page {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 20px 18px 60px;
+      padding: 40px 20px 60px;
     }
 
     header {
@@ -59,36 +63,39 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-soft);
     }
 
     /* --------- PROFILE ICON AREA --------- */
     .profile-wrapper {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 18px;
     }
 
     .profile-photo {
-      width: 64px;
-      height: 64px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       border: 2px solid var(--accent);
       overflow: hidden;
-      background: radial-gradient(circle at 30% 30%, #4f46e5, #020617);
+      background: radial-gradient(circle at 30% 30%, #06b6d4, #020617);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       position: relative;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
       animation: floatGlow 4s ease-in-out infinite;
     }
 
     .profile-photo span {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: #e5e7eb;
+      color: #ffffff;
+      letter-spacing: 1px;
     }
 
     .profile-photo img {
@@ -100,62 +107,68 @@
     @keyframes floatGlow {
       0%, 100% {
         transform: translateY(0);
-        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
       }
       50% {
-        transform: translateY(-6px);
-        box-shadow: 0 18px 40px rgba(79, 70, 229, 0.55);
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(6, 182, 212, 0.6);
       }
     }
 
     .profile-text h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      background: linear-gradient(90deg, #fff, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .profile-text p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
-    /* Upload button (only visible in edit mode) */
     .profile-photo-upload {
       display: none;
-      font-size: 0.7rem;
-      color: var(--text-muted);
+      font-size: 0.75rem;
+      color: var(--accent);
       cursor: pointer;
+      margin-top: 6px;
+      font-weight: 600;
     }
 
     /* --------- NAV / ADMIN BAR --------- */
     .top-controls {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
       flex-wrap: wrap;
     }
 
     .btn {
-      border-radius: 999px;
+      border-radius: 8px;
       border: 1px solid var(--border-soft);
-      background: linear-gradient(135deg, #111827, #020617);
-      padding: 6px 14px;
-      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       cursor: pointer;
       color: var(--text-main);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        border-color var(--transition-fast), background var(--transition-fast);
+      transition: all var(--transition-fast);
     }
 
     .btn:hover {
       border-color: var(--accent);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.9);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px var(--accent-soft);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .btn-outline {
@@ -163,8 +176,13 @@
     }
 
     .btn-danger {
-      border-color: var(--danger);
+      border-color: rgba(239, 68, 68, 0.4);
       color: #fecaca;
+    }
+    
+    .btn-danger:hover {
+      border-color: var(--danger);
+      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
     }
 
     .edit-indicator {
@@ -175,136 +193,180 @@
     /* --------- MAIN CONTENT --------- */
     main {
       display: grid;
-      grid-template-columns: 2.1fr 1.4fr;
-      gap: 18px;
+      grid-template-columns: 2fr 1.3fr;
+      gap: 24px;
     }
 
     @media (max-width: 850px) {
       main {
         grid-template-columns: 1fr;
       }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     .column {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 24px;
     }
 
     .card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 57%);
+      background: linear-gradient(145deg, #111827 0%, #020617 100%);
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
-      padding: 16px 16px 14px;
+      padding: 24px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    
+    .card:hover {
+      border-color: rgba(6, 182, 212, 0.3);
+      transform: translateY(-2px);
     }
 
     .card::before {
       content: "";
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, var(--accent-soft), transparent 55%);
-      opacity: 0.25;
-      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card-header {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
       position: relative;
       z-index: 1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 10px;
     }
 
     .card-title {
-      font-size: 0.9rem;
-      letter-spacing: 0.09em;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--accent);
     }
 
     .card-tag {
       font-size: 0.7rem;
-      padding: 2px 8px;
+      padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.2);
       color: #9ca3af;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .card-content {
-      font-size: 0.88rem;
-      color: var(--text-main);
+      font-size: 0.95rem;
+      color: #d1d5db;
       position: relative;
       z-index: 1;
     }
 
     .muted {
       color: var(--text-muted);
-      font-size: 0.83rem;
+      font-size: 0.88rem;
     }
 
     ul {
-      margin-left: 1.1rem;
-      margin-top: 4px;
+      list-style: none;
+      padding-left: 0;
     }
 
     li {
-      margin-bottom: 3px;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
     }
 
     /* --------- CERTIFICATES LIST --------- */
     .cert-list {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-top: 6px;
-      font-size: 0.85rem;
+      gap: 10px;
+      margin-top: 16px;
+      font-size: 0.9rem;
     }
 
     .cert-item {
-      padding: 6px 8px;
-      border-radius: 10px;
-      border: 1px dashed rgba(148, 163, 184, 0.4);
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(148, 163, 184, 0.2);
       display: flex;
       justify-content: space-between;
-      gap: 8px;
+      gap: 12px;
       align-items: center;
+      transition: background 0.2s ease;
+    }
+
+    .cert-item:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(6, 182, 212, 0.3);
     }
 
     .cert-item span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 170px;
+      max-width: 200px;
     }
 
     .cert-item a {
-      font-size: 0.75rem;
-      opacity: 0.9;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      background: var(--accent-soft);
+      border-radius: 4px;
     }
 
-    /* Hidden input */
     input[type="file"] {
-      font-size: 0.75rem;
-      margin-top: 6px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: var(--text-muted);
     }
 
     /* --------- EDITABLE CONTENT --------- */
     [contenteditable="true"] {
-      outline: 1px dashed rgba(148, 163, 184, 0.5);
+      outline: 1px dashed rgba(6, 182, 212, 0.5);
       border-radius: 6px;
-      padding: 3px 4px;
+      padding: 6px;
+      background: rgba(255, 255, 255, 0.02);
     }
 
     .edit-hint {
       display: none;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-top: 4px;
+      font-size: 0.75rem;
+      color: var(--success);
+      margin-top: 12px;
+      font-style: italic;
     }
 
     .edit-mode .edit-hint,
@@ -312,12 +374,11 @@
       display: block;
     }
 
-    /* --------- ANIMATIONS FOR SECTIONS --------- */
-
+    /* --------- ANIMATIONS --------- */
     .anim-section {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.55s ease, transform 0.55s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .anim-visible {
@@ -325,104 +386,25 @@
       transform: translateY(0);
     }
 
-    /* Different animation flavours per topic */
-    .anim-about.anim-visible {
-      animation: slideFromLeft 0.8s ease both;
-    }
-
-    .anim-skills.anim-visible {
-      animation: zoomPop 0.7s ease both;
-    }
-
-    .anim-projects.anim-visible {
-      animation: slideFromBottom 0.75s ease both;
-    }
-
-    .anim-cert.anim-visible {
-      animation: fadeInSoft 0.7s ease both;
-    }
-
-    .anim-contact.anim-visible {
-      animation: slideFromRight 0.75s ease both;
-    }
-
-    @keyframes slideFromLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-26px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes slideFromRight {
-      from {
-        opacity: 0;
-        transform: translateX(26px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes slideFromBottom {
-      from {
-        opacity: 0;
-        transform: translateY(28px) scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes zoomPop {
-      0% {
-        opacity: 0;
-        transform: scale(0.85);
-      }
-      80% {
-        opacity: 1;
-        transform: scale(1.03);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    @keyframes fadeInSoft {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Cards clickable for info popup */
     .info-card {
       cursor: pointer;
     }
 
     .info-card-hint {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-      opacity: 0.8;
+      font-size: 0.75rem;
+      color: rgba(156, 163, 175, 0.6);
+      margin-top: 16px;
+      text-align: right;
     }
 
-    /* ---------- BIG POPUP (MODAL) FOR INFO ---------- */
-
+    /* ---------- BIG POPUP (MODAL) ---------- */
     .info-modal {
       position: fixed;
       inset: 0;
       display: none;
       align-items: center;
       justify-content: center;
-      z-index: 999;
+      z-index: 9999;
     }
 
     .info-modal.open {
@@ -432,10 +414,10 @@
     .info-modal-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(6px);
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(8px);
       opacity: 0;
-      animation: modalBackdropIn 0.28s ease forwards;
+      animation: modalBackdropIn 0.3s ease forwards;
     }
 
     @keyframes modalBackdropIn {
@@ -445,25 +427,21 @@
 
     .info-modal-content {
       position: relative;
-      max-width: 700px;
-      width: 92%;
-      max-height: 80vh;
+      max-width: 750px;
+      width: 90%;
+      max-height: 85vh;
       overflow-y: auto;
-      background: radial-gradient(circle at top, #111827 0, #020617 65%);
-      border-radius: 20px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 20px 20px 18px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
-      transform: translateY(14px) scale(0.9);
+      background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      padding: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      transform: translateY(20px) scale(0.95);
       opacity: 0;
-      animation: modalIn 0.32s ease-out forwards;
+      animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     @keyframes modalIn {
-      0% {
-        opacity: 0;
-        transform: translateY(16px) scale(0.9);
-      }
       100% {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -471,58 +449,67 @@
     }
 
     .info-modal-title {
-      font-size: 1.6rem;
-      letter-spacing: 0.08em;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #e5e7eb;
-      margin-bottom: 10px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 10px;
     }
 
     .info-modal-body {
-      font-size: 1.05rem; /* BIGGER FONT */
-      line-height: 1.85;
+      font-size: 1.15rem; 
+      line-height: 1.8;
       color: #e5e7eb;
     }
 
     .info-modal-body p {
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
 
     .info-modal-body ul {
-      margin-top: 8px;
-      margin-left: 1.3rem;
+      margin-top: 12px;
     }
 
     .info-modal-body li {
-      margin-bottom: 6px;
+      margin-bottom: 12px;
     }
 
     .modal-close {
       position: absolute;
-      top: 10px;
-      right: 12px;
+      top: 20px;
+      right: 24px;
       border: none;
-      background: transparent;
+      background: rgba(255, 255, 255, 0.05);
       color: #9ca3af;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      padding: 4px;
-      border-radius: 999px;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+      border-radius: 50%;
+      transition: all 0.2s ease;
     }
 
     .modal-close:hover {
-      background: rgba(31, 41, 55, 0.8);
-      color: #e5e7eb;
-      transform: scale(1.05);
+      background: var(--danger);
+      color: #fff;
+      transform: rotate(90deg);
     }
 
     /* --------- FOOTER --------- */
     footer {
-      margin-top: 24px;
-      font-size: 0.78rem;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 0.85rem;
       color: var(--text-muted);
       text-align: center;
+      letter-spacing: 0.05em;
     }
   </style>
 </head>
@@ -531,9 +518,7 @@
     <!-- ===== HEADER ===== -->
     <header>
       <div class="profile-wrapper">
-        <!-- PROFILE ICON (you can upload your picture here) -->
         <div class="profile-photo" id="profilePhoto">
-          <!-- Default initials shown until picture is uploaded -->
           <span>AP</span>
         </div>
 
@@ -541,24 +526,14 @@
           <h1 id="name" data-key="name" contenteditable="false">
             ANNANT PUNDIR
           </h1>
-          <p
-            id="tagline"
-            data-key="tagline"
-            contenteditable="false"
-          >
-            Cybersecurity student at VIT | Aspiring Freelancer | C & Python Learner
+          <p id="tagline" data-key="tagline" contenteditable="false">
+            Cybersecurity student at VIT | AI Enthusiast | C++ & Python
           </p>
-          <p
-            class="muted"
-            id="email"
-            data-key="email"
-            contenteditable="false"
-          >
-            📧 Email: annantpundir43@gmail.com
+          <p class="muted" id="email" data-key="email" contenteditable="false">
+            📧 annantpundir43@gmail.com
           </p>
-          <!-- Only visible in edit mode -->
           <label class="profile-photo-upload">
-            Change profile photo:
+            📸 Update photo:
             <input type="file" id="profilePhotoInput" accept="image/*" />
           </label>
         </div>
@@ -567,13 +542,13 @@
       <div class="top-controls">
         <button class="btn btn-outline" id="loginBtn">Admin Login</button>
         <button class="btn" id="toggleEditBtn" style="display:none;">
-          ✏️ Edit mode: <span id="editStateLabel">OFF</span>
+          ✏️ Edit mode: <span id="editStateLabel" style="margin-left: 4px; color: var(--accent);">OFF</span>
         </button>
         <button class="btn btn-outline" id="saveBtn" style="display:none;">
           💾 Save changes
         </button>
         <button class="btn btn-danger" id="clearBtn" style="display:none;">
-          🗑 Clear saved data
+          🗑 Clear data
         </button>
       </div>
     </header>
@@ -581,131 +556,87 @@
     <!-- ===== MAIN ===== -->
     <main id="mainArea">
       <section class="column">
-        <!-- ABOUT (different animation + clickable) -->
-        <article class="card anim-section anim-about info-card" data-section="about">
+        <!-- ABOUT -->
+        <article class="card anim-section info-card" data-section="about">
           <div class="card-header">
             <span class="card-title">About Me</span>
-            <span class="card-tag">Tap to view</span>
+            <span class="card-tag">Expand</span>
           </div>
-          <div
-            class="card-content"
-            id="about"
-            data-key="about"
-            contenteditable="false"
-          >
-            I am an 18-year-old first-year student at VIT University,
-            specializing in Cybersecurity. I am building strong fundamentals in
-            C programming and Python, and I am interested in freelancing in
-            areas like audio-to-text transcription and technical tasks related
-            to security and IT.
+          <div class="card-content" id="about" data-key="about" contenteditable="false">
+            I am an 18-year-old first-year student at VIT University, specializing in Cybersecurity. I am building strong fundamentals in C++ and Python, and I am interested in exploring AI integrations, freelancing in audio-to-text transcription, and taking on technical tasks related to modern security systems.
           </div>
-          <p class="info-card-hint">Click this card to view in big text with animation.</p>
-          <p class="edit-hint">You can edit this text in Edit Mode.</p>
+          <p class="info-card-hint">Click card to expand</p>
+          <p class="edit-hint">Click the text above to edit your bio.</p>
         </article>
 
-        <!-- SKILLS (different animation + clickable) -->
-        <article class="card anim-section anim-skills info-card" data-section="skills">
+        <!-- SKILLS -->
+        <article class="card anim-section info-card" data-section="skills">
           <div class="card-header">
             <span class="card-title">Skills & Interests</span>
-            <span class="card-tag">Tap to view</span>
+            <span class="card-tag">Expand</span>
           </div>
-          <div
-            class="card-content"
-            id="skills"
-            data-key="skills"
-            contenteditable="false"
-          >
+          <div class="card-content" id="skills" data-key="skills" contenteditable="false">
             <ul>
               <li>Cybersecurity fundamentals</li>
-              <li>C programming (beginner, learning step by step)</li>
-              <li>Python basics</li>
-              <li>Audio to subtitle transcription</li>
-              <li>Networking basics for security</li>
+              <li>C++ (Object-Oriented Programming & Logic)</li>
+              <li>Python script development</li>
+              <li>AI logic & Voice command integration</li>
+              <li>Networking basics for security architecture</li>
             </ul>
           </div>
-          <p class="info-card-hint">Click to see skills in a larger animated view.</p>
-          <p class="edit-hint">You can add or remove skills here.</p>
+          <p class="info-card-hint">Click card to expand</p>
+          <p class="edit-hint">Edit the list to add or remove skills.</p>
         </article>
 
-        <!-- PROJECTS (different animation + clickable) -->
-        <article class="card anim-section anim-projects info-card" data-section="projects">
+        <!-- PROJECTS -->
+        <article class="card anim-section info-card" data-section="projects">
           <div class="card-header">
             <span class="card-title">Projects & Goals</span>
-            <span class="card-tag">Tap to view</span>
+            <span class="card-tag">Expand</span>
           </div>
-          <div
-            class="card-content"
-            id="projects"
-            data-key="projects"
-            contenteditable="false"
-          >
+          <div class="card-content" id="projects" data-key="projects" contenteditable="false">
             <ul>
-              <li>Building a personal portfolio website (this one).</li>
-              <li>Practising C language programs (loops, arrays, functions).</li>
+              <li>Developing an intelligent AI Chatbot with voice interaction capabilities.</li>
+              <li>Practicing C++ and object-oriented programming concepts.</li>
               <li>Learning Linux basics and command line for cybersecurity.</li>
               <li>Exploring networking concepts important for security.</li>
             </ul>
           </div>
-          <p class="info-card-hint">
-            Click to open your projects and goals in a big readable box.
-          </p>
-          <p class="edit-hint">
-            Write about your current projects, labs, or future plans here.
-          </p>
+          <p class="info-card-hint">Click card to expand</p>
+          <p class="edit-hint">Write about your current projects, labs, or future plans here.</p>
         </article>
       </section>
 
       <section class="column">
-        <!-- CERTIFICATES (different animation + clickable) -->
-        <article class="card anim-section anim-cert info-card" data-section="certs">
+        <!-- CERTIFICATES -->
+        <article class="card anim-section info-card" data-section="certs">
           <div class="card-header">
             <span class="card-title">Certificates</span>
-            <span class="card-tag">Tap to view</span>
+            <span class="card-tag">Expand</span>
           </div>
           <div class="card-content">
             <p class="muted">
-              You can upload certificate files here (PDF/JPG/PNG). Links will be
-              saved in this browser using localStorage.
+              Upload certificate files here (PDF/JPG/PNG). Links will be saved locally in this browser.
             </p>
-
             <input type="file" id="certInput" multiple />
-
             <div class="cert-list" id="certList"></div>
           </div>
-          <p class="info-card-hint">
-            Click to see your certificates section in big text.
-          </p>
+          <p class="info-card-hint">Click card to expand</p>
         </article>
 
-        <!-- CONTACT (different animation + clickable) -->
-        <article class="card anim-section anim-contact info-card" data-section="contact">
+        <!-- CONTACT -->
+        <article class="card anim-section info-card" data-section="contact">
           <div class="card-header">
             <span class="card-title">Contact</span>
-            <span class="card-tag">Tap to view</span>
+            <span class="card-tag">Expand</span>
           </div>
-          <div
-            class="card-content"
-            id="contact"
-            data-key="contact"
-            contenteditable="false"
-          >
-            <p>
-              📧 <strong>Email:</strong> annantpundir43@gmail.com
-            </p>
-            <p>
-              💼 <strong>Freelancing interest:</strong> Audio transcription,
-              beginner-level tech work, and security-related tasks.
-            </p>
-            <p>
-              🌐 <strong>Location:</strong> India
-            </p>
+          <div class="card-content" id="contact" data-key="contact" contenteditable="false">
+            <p>📧 <strong>Email:</strong> annantpundir43@gmail.com</p>
+            <p>💼 <strong>Interests:</strong> AI Development, Cybersecurity tasks, and Audio transcription.</p>
+            <p>🌐 <strong>Location:</strong> India</p>
           </div>
-          <p class="info-card-hint">
-            Click to open contact details with bigger fonts and smooth animation.
-          </p>
-          <p class="edit-hint">
-            You can modify contact details or add links to your LinkedIn, GitHub, etc.
-          </p>
+          <p class="info-card-hint">Click card to expand</p>
+          <p class="edit-hint">Modify your contact details here.</p>
         </article>
       </section>
     </main>
@@ -729,14 +660,13 @@
 
   <!-- ===== SCRIPT ===== -->
   <script>
-    const PASSWORD = "annant123"; // 🔐 change this to your own password
+    const PASSWORD = "annant123";
 
     const editableFields = document.querySelectorAll("[data-key]");
     const loginBtn = document.getElementById("loginBtn");
     const toggleEditBtn = document.getElementById("toggleEditBtn");
     const saveBtn = document.getElementById("saveBtn");
     const clearBtn = document.getElementById("clearBtn");
-    const mainArea = document.getElementById("mainArea");
     const yearSpan = document.getElementById("year");
     const editStateLabel = document.getElementById("editStateLabel");
 
@@ -761,20 +691,17 @@
 
     /* ---- LOCAL STORAGE HELPERS ---- */
     function loadData() {
-      // Text fields
       editableFields.forEach((el) => {
         const key = el.dataset.key;
         const stored = localStorage.getItem("portfolio_" + key);
         if (stored) el.innerHTML = stored;
       });
 
-      // Profile photo
       const photoData = localStorage.getItem("portfolio_profilePhoto");
       if (photoData) {
         setProfilePhoto(photoData);
       }
 
-      // Certificates
       const certs = JSON.parse(localStorage.getItem("portfolio_certs") || "[]");
       certs.forEach((c) => addCertToDOM(c.name, c.url));
     }
@@ -784,11 +711,11 @@
         const key = el.dataset.key;
         localStorage.setItem("portfolio_" + key, el.innerHTML);
       });
-      alert("Changes saved locally in this browser.");
+      alert("Changes successfully saved to local browser storage.");
     }
 
     function clearData() {
-      if (!confirm("Are you sure you want to clear all saved data?")) return;
+      if (!confirm("Are you sure you want to clear all saved data? This cannot be undone.")) return;
       Object.keys(localStorage)
         .filter((k) => k.startsWith("portfolio_"))
         .forEach((k) => localStorage.removeItem(k));
@@ -805,7 +732,6 @@
 
     loginBtn.addEventListener("click", () => {
       if (isAdmin) {
-        // logout
         isAdmin = false;
         setEditMode(false);
         loginBtn.textContent = "Admin Login";
@@ -822,16 +748,12 @@
         toggleEditBtn.style.display = "inline-flex";
         saveBtn.style.display = "inline-flex";
         clearBtn.style.display = "inline-flex";
-        alert("Admin access granted. You can now enable Edit Mode.");
-      } else {
-        alert("Wrong password.");
+      } else if (input !== null) {
+        alert("Incorrect password.");
       }
     });
 
-    toggleEditBtn.addEventListener("click", () => {
-      setEditMode(!editMode);
-    });
-
+    toggleEditBtn.addEventListener("click", () => setEditMode(!editMode));
     saveBtn.addEventListener("click", saveData);
     clearBtn.addEventListener("click", clearData);
 
@@ -859,15 +781,16 @@
     function addCertToDOM(name, url) {
       const item = document.createElement("div");
       item.className = "cert-item";
-
+      
       const nameSpan = document.createElement("span");
       nameSpan.textContent = name;
+      nameSpan.title = name;
 
       const link = document.createElement("a");
       link.href = url;
       link.target = "_blank";
       link.rel = "noopener noreferrer";
-      link.textContent = "Open";
+      link.textContent = "View";
 
       item.appendChild(nameSpan);
       item.appendChild(link);
@@ -897,7 +820,6 @@
 
     /* ---- SCROLL ANIMATIONS ---- */
     const animSections = document.querySelectorAll(".anim-section");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -907,29 +829,19 @@
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
-
     animSections.forEach((sec) => observer.observe(sec));
 
-    /* ---- BIG INFO MODAL HANDLING ---- */
-
+    /* ---- MODAL HANDLING ---- */
     function openInfoModalFromCard(card) {
       const titleEl = card.querySelector(".card-title");
       const contentEl = card.querySelector(".card-content");
-
       if (!titleEl || !contentEl) return;
 
       modalTitle.textContent = titleEl.textContent;
       modalBody.innerHTML = contentEl.innerHTML;
-
       infoModal.classList.add("open");
-
-      // restart animation for content
-      infoModalContent.style.animation = "none";
-      void infoModalContent.offsetWidth;
-      infoModalContent.style.animation = "";
-      infoModalContent.classList.add("modal-anim");
     }
 
     function closeInfoModal() {
@@ -938,13 +850,7 @@
 
     infoCards.forEach((card) => {
       card.addEventListener("click", (e) => {
-        // Don't trigger when clicking file input, links, or while editing
-        if (
-          editMode ||
-          e.target.tagName === "INPUT" ||
-          e.target.tagName === "A" ||
-          e.target.closest("label")
-        ) {
+        if (editMode || e.target.tagName === "INPUT" || e.target.tagName === "A" || e.target.closest("label")) {
           return;
         }
         openInfoModalFromCard(card);
@@ -953,16 +859,11 @@
 
     modalCloseBtn.addEventListener("click", closeInfoModal);
     infoModalBackdrop.addEventListener("click", closeInfoModal);
-
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeInfoModal();
-      }
+      if (e.key === "Escape") closeInfoModal();
     });
 
-    // Initial load
     loadData();
   </script>
 </body>
 </html>
-
