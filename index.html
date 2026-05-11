@@ -2,868 +2,462 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ANNANT PUNDIR - Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annant Pundir | Portfolio</title>
+
   <style>
-    /* --------- GLOBAL STYLES --------- */
-    :root {
-      --bg-color: #050816;
-      --card-color: #0b1020;
-      --accent: #06b6d4; /* Updated to a sleek cyan for a cyber feel */
-      --accent-soft: rgba(6, 182, 212, 0.15);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --danger: #ef4444;
-      --success: #22c55e;
-      --border-soft: #1f2933;
-      --radius-lg: 16px;
-      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.5);
-      --transition-fast: 0.3s ease;
+    :root{
+      --bg:#0b0f19;
+      --card:#111827;
+      --border:#1f2937;
+      --text:#f8fafc;
+      --muted:#94a3b8;
+      --accent:#3b82f6;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 70%);
-      color: var(--text-main);
-      min-height: 100vh;
-      line-height: 1.6;
-      scroll-behavior: smooth;
+    body{
+      /* Dark overlay + Tech Background Image */
+      background: linear-gradient(rgba(11, 15, 25, 0.85), rgba(17, 24, 39, 0.95)), 
+                  url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      
+      font-family:Arial, sans-serif;
+      color:var(--text);
+      line-height:1.6;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-    
-    a:hover {
-      color: #67e8f9;
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:auto;
+      padding:40px 0;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-bottom:50px;
+      border-bottom:1px solid var(--border);
+      padding-bottom:30px;
     }
 
-    /* --------- LAYOUT --------- */
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 40px 20px 60px;
+    .profile{
+      display:flex;
+      align-items:center;
+      gap:20px;
     }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--border-soft);
+    .profile-img{
+      width:90px;
+      height:90px;
+      border-radius:12px;
+      background:#1e293b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:2rem;
+      font-weight:bold;
+      color:var(--accent);
+      border:1px solid var(--border);
     }
 
-    /* --------- PROFILE ICON AREA --------- */
-    .profile-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 18px;
+    .profile-info h1{
+      font-size:2.2rem;
+      margin-bottom:5px;
     }
 
-    .profile-photo {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      border: 2px solid var(--accent);
-      overflow: hidden;
-      background: radial-gradient(circle at 30% 30%, #06b6d4, #020617);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      position: relative;
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-      animation: floatGlow 4s ease-in-out infinite;
+    .profile-info p{
+      color:var(--muted);
     }
 
-    .profile-photo span {
-      font-size: 2rem;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 1px;
+    .buttons{
+      margin-top:15px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
-    .profile-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .btn{
+      padding:10px 18px;
+      border-radius:8px;
+      text-decoration:none;
+      font-size:0.9rem;
+      transition:0.3s;
+      border:1px solid var(--border);
     }
 
-    @keyframes floatGlow {
-      0%, 100% {
-        transform: translateY(0);
-        box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    .btn-primary{
+      background:var(--accent);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      background:#2563eb;
+    }
+
+    .btn-outline{
+      color:white;
+    }
+
+    .btn-outline:hover{
+      border-color:var(--accent);
+      background:rgba(59,130,246,0.1);
+    }
+
+    main{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:28px;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:var(--accent);
+      box-shadow:0 10px 25px rgba(59,130,246,0.15);
+    }
+
+    .card h2{
+      font-size:1rem;
+      letter-spacing:1px;
+      margin-bottom:18px;
+      color:var(--accent);
+      text-transform:uppercase;
+    }
+
+    .card p,
+    .card li{
+      color:#d1d5db;
+      font-size:0.95rem;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    li{
+      margin-bottom:12px;
+    }
+
+    /* CERTIFICATES */
+
+    .certificate{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      margin-bottom:15px;
+      background:rgba(255,255,255,0.02);
+    }
+
+    .certificate h4{
+      margin-bottom:4px;
+    }
+
+    .certificate p{
+      font-size:0.8rem;
+      color:var(--muted);
+    }
+
+    .verify-btn{
+      padding:8px 14px;
+      border-radius:6px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:white;
+      font-size:0.85rem;
+      transition:0.3s;
+    }
+
+    .verify-btn:hover{
+      background:rgba(59,130,246,0.1);
+      border-color:var(--accent);
+    }
+
+    footer{
+      margin-top:60px;
+      padding-top:20px;
+      border-top:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      color:var(--muted);
+      font-size:0.85rem;
+    }
+
+    /* POPUP */
+
+    .popup{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.7);
+      backdrop-filter:blur(5px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+    }
+
+    .popup-content{
+      background:#111827;
+      width:90%;
+      max-width:700px;
+      border-radius:18px;
+      padding:35px;
+      border:1px solid var(--border);
+      animation:popup 0.3s ease;
+      position:relative;
+    }
+
+    @keyframes popup{
+      from{
+        opacity:0;
+        transform:scale(0.8);
       }
-      50% {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(6, 182, 212, 0.6);
-      }
-    }
-
-    .profile-text h1 {
-      font-size: 1.7rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: linear-gradient(90deg, #fff, #9ca3af);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .profile-text p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .profile-photo-upload {
-      display: none;
-      font-size: 0.75rem;
-      color: var(--accent);
-      cursor: pointer;
-      margin-top: 6px;
-      font-weight: 600;
-    }
-
-    /* --------- NAV / ADMIN BAR --------- */
-    .top-controls {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border-radius: 8px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      padding: 8px 16px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      color: var(--text-main);
-      transition: all var(--transition-fast);
-    }
-
-    .btn:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px var(--accent-soft);
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .btn-outline {
-      background: transparent;
-    }
-
-    .btn-danger {
-      border-color: rgba(239, 68, 68, 0.4);
-      color: #fecaca;
-    }
-    
-    .btn-danger:hover {
-      border-color: var(--danger);
-      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
-    }
-
-    .edit-indicator {
-      font-size: 0.75rem;
-      color: var(--accent);
-    }
-
-    /* --------- MAIN CONTENT --------- */
-    main {
-      display: grid;
-      grid-template-columns: 2fr 1.3fr;
-      gap: 24px;
-    }
-
-    @media (max-width: 850px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .card {
-      background: linear-gradient(145deg, #111827 0%, #020617 100%);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-soft);
-      box-shadow: var(--shadow-soft);
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-    
-    .card:hover {
-      border-color: rgba(6, 182, 212, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      position: relative;
-      z-index: 1;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 10px;
-    }
-
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .card-tag {
-      font-size: 0.7rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      color: #9ca3af;
-      background: rgba(15, 23, 42, 0.6);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card-content {
-      font-size: 0.95rem;
-      color: #d1d5db;
-      position: relative;
-      z-index: 1;
-    }
-
-    .muted {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    li {
-      margin-bottom: 10px;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: bold;
-    }
-
-    /* --------- CERTIFICATES LIST --------- */
-    .cert-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 16px;
-      font-size: 0.9rem;
-    }
-
-    .cert-item {
-      padding: 10px 14px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      transition: background 0.2s ease;
-    }
-
-    .cert-item:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(6, 182, 212, 0.3);
-    }
-
-    .cert-item span {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 200px;
-    }
-
-    .cert-item a {
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      background: var(--accent-soft);
-      border-radius: 4px;
-    }
-
-    input[type="file"] {
-      font-size: 0.8rem;
-      margin-top: 10px;
-      color: var(--text-muted);
-    }
-
-    /* --------- EDITABLE CONTENT --------- */
-    [contenteditable="true"] {
-      outline: 1px dashed rgba(6, 182, 212, 0.5);
-      border-radius: 6px;
-      padding: 6px;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .edit-hint {
-      display: none;
-      font-size: 0.75rem;
-      color: var(--success);
-      margin-top: 12px;
-      font-style: italic;
-    }
-
-    .edit-mode .edit-hint,
-    .edit-mode .profile-photo-upload {
-      display: block;
-    }
-
-    /* --------- ANIMATIONS --------- */
-    .anim-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .anim-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .info-card {
-      cursor: pointer;
-    }
-
-    .info-card-hint {
-      font-size: 0.75rem;
-      color: rgba(156, 163, 175, 0.6);
-      margin-top: 16px;
-      text-align: right;
-    }
-
-    /* ---------- BIG POPUP (MODAL) ---------- */
-    .info-modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .info-modal.open {
-      display: flex;
-    }
-
-    .info-modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(2, 6, 23, 0.85);
-      backdrop-filter: blur(8px);
-      opacity: 0;
-      animation: modalBackdropIn 0.3s ease forwards;
-    }
-
-    @keyframes modalBackdropIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .info-modal-content {
-      position: relative;
-      max-width: 750px;
-      width: 90%;
-      max-height: 85vh;
-      overflow-y: auto;
-      background: linear-gradient(145deg, #0f172a 0%, #020617 100%);
-      border-radius: 24px;
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      padding: 40px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-      transform: translateY(20px) scale(0.95);
-      opacity: 0;
-      animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    @keyframes modalIn {
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+      to{
+        opacity:1;
+        transform:scale(1);
       }
     }
 
-    .info-modal-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-      padding-bottom: 10px;
+    .close{
+      position:absolute;
+      top:15px;
+      right:20px;
+      font-size:1.5rem;
+      cursor:pointer;
+      color:var(--muted);
     }
 
-    .info-modal-body {
-      font-size: 1.15rem; 
-      line-height: 1.8;
-      color: #e5e7eb;
+    .close:hover{
+      color:white;
     }
 
-    .info-modal-body p {
-      margin-bottom: 16px;
+    #popupTitle{
+      color:var(--accent);
+      margin-bottom:15px;
     }
 
-    .info-modal-body ul {
-      margin-top: 12px;
+    #popupText{
+      color:#d1d5db;
+      line-height:1.8;
     }
 
-    .info-modal-body li {
-      margin-bottom: 12px;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      border: none;
-      background: rgba(255, 255, 255, 0.05);
-      color: #9ca3af;
-      font-size: 1.5rem;
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: all 0.2s ease;
-    }
-
-    .modal-close:hover {
-      background: var(--danger);
-      color: #fff;
-      transform: rotate(90deg);
-    }
-
-    /* --------- FOOTER --------- */
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-soft);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-      letter-spacing: 0.05em;
-    }
   </style>
 </head>
+
 <body>
-  <div class="page">
-    <!-- ===== HEADER ===== -->
-    <header>
-      <div class="profile-wrapper">
-        <div class="profile-photo" id="profilePhoto">
-          <span>AP</span>
+
+<div class="container">
+
+  <header>
+
+    <div class="profile">
+
+      <div class="profile-img">
+        AP
+      </div>
+
+      <div class="profile-info">
+
+        <h1>ANNANT PUNDIR</h1>
+
+        <p>
+          Second-year Cybersecurity student at VIT University | Backend Development | AI & Linux Enthusiast
+        </p>
+
+        <p>
+          Email: annantpundir43@gmail.com
+        </p>
+
+        <div class="buttons">
+
+          <a href="#" class="btn btn-primary">
+            Download Resume
+          </a>
+
+          <a href="https://github.com/annantpundir43-blip"
+             target="_blank"
+             class="btn btn-outline">
+             GitHub Profile
+          </a>
+
+          <a href="https://www.linkedin.com/in/annant-pundir-1467453ba/"
+             target="_blank"
+             class="btn btn-outline">
+             LinkedIn
+          </a>
+
         </div>
 
-        <div class="profile-text">
-          <h1 id="name" data-key="name" contenteditable="false">
-            ANNANT PUNDIR
-          </h1>
-          <p id="tagline" data-key="tagline" contenteditable="false">
-            Cybersecurity student at VIT | AI Enthusiast | C++ & Python
-          </p>
-          <p class="muted" id="email" data-key="email" contenteditable="false">
-            📧 annantpundir43@gmail.com
-          </p>
-          <label class="profile-photo-upload">
-            📸 Update photo:
-            <input type="file" id="profilePhotoInput" accept="image/*" />
-          </label>
-        </div>
       </div>
 
-      <div class="top-controls">
-        <button class="btn btn-outline" id="loginBtn">Admin Login</button>
-        <button class="btn" id="toggleEditBtn" style="display:none;">
-          ✏️ Edit mode: <span id="editStateLabel" style="margin-left: 4px; color: var(--accent);">OFF</span>
-        </button>
-        <button class="btn btn-outline" id="saveBtn" style="display:none;">
-          💾 Save changes
-        </button>
-        <button class="btn btn-danger" id="clearBtn" style="display:none;">
-          🗑 Clear data
-        </button>
-      </div>
-    </header>
-
-    <!-- ===== MAIN ===== -->
-    <main id="mainArea">
-      <section class="column">
-        <!-- ABOUT -->
-        <article class="card anim-section info-card" data-section="about">
-          <div class="card-header">
-            <span class="card-title">About Me</span>
-            <span class="card-tag">Expand</span>
-          </div>
-          <div class="card-content" id="about" data-key="about" contenteditable="false">
-            I am an 18-year-old first-year student at VIT University, specializing in Cybersecurity. I am building strong fundamentals in C++ and Python, and I am interested in exploring AI integrations, freelancing in audio-to-text transcription, and taking on technical tasks related to modern security systems.
-          </div>
-          <p class="info-card-hint">Click card to expand</p>
-          <p class="edit-hint">Click the text above to edit your bio.</p>
-        </article>
-
-        <!-- SKILLS -->
-        <article class="card anim-section info-card" data-section="skills">
-          <div class="card-header">
-            <span class="card-title">Skills & Interests</span>
-            <span class="card-tag">Expand</span>
-          </div>
-          <div class="card-content" id="skills" data-key="skills" contenteditable="false">
-            <ul>
-              <li>Cybersecurity fundamentals</li>
-              <li>C++ (Object-Oriented Programming & Logic)</li>
-              <li>Python script development</li>
-              <li>AI logic & Voice command integration</li>
-              <li>Networking basics for security architecture</li>
-            </ul>
-          </div>
-          <p class="info-card-hint">Click card to expand</p>
-          <p class="edit-hint">Edit the list to add or remove skills.</p>
-        </article>
-
-        <!-- PROJECTS -->
-        <article class="card anim-section info-card" data-section="projects">
-          <div class="card-header">
-            <span class="card-title">Projects & Goals</span>
-            <span class="card-tag">Expand</span>
-          </div>
-          <div class="card-content" id="projects" data-key="projects" contenteditable="false">
-            <ul>
-              <li>Developing an intelligent AI Chatbot with voice interaction capabilities.</li>
-              <li>Practicing C++ and object-oriented programming concepts.</li>
-              <li>Learning Linux basics and command line for cybersecurity.</li>
-              <li>Exploring networking concepts important for security.</li>
-            </ul>
-          </div>
-          <p class="info-card-hint">Click card to expand</p>
-          <p class="edit-hint">Write about your current projects, labs, or future plans here.</p>
-        </article>
-      </section>
-
-      <section class="column">
-        <!-- CERTIFICATES -->
-        <article class="card anim-section info-card" data-section="certs">
-          <div class="card-header">
-            <span class="card-title">Certificates</span>
-            <span class="card-tag">Expand</span>
-          </div>
-          <div class="card-content">
-            <p class="muted">
-              Upload certificate files here (PDF/JPG/PNG). Links will be saved locally in this browser.
-            </p>
-            <input type="file" id="certInput" multiple />
-            <div class="cert-list" id="certList"></div>
-          </div>
-          <p class="info-card-hint">Click card to expand</p>
-        </article>
-
-        <!-- CONTACT -->
-        <article class="card anim-section info-card" data-section="contact">
-          <div class="card-header">
-            <span class="card-title">Contact</span>
-            <span class="card-tag">Expand</span>
-          </div>
-          <div class="card-content" id="contact" data-key="contact" contenteditable="false">
-            <p>📧 <strong>Email:</strong> annantpundir43@gmail.com</p>
-            <p>💼 <strong>Interests:</strong> AI Development, Cybersecurity tasks, and Audio transcription.</p>
-            <p>🌐 <strong>Location:</strong> India</p>
-          </div>
-          <p class="info-card-hint">Click card to expand</p>
-          <p class="edit-hint">Modify your contact details here.</p>
-        </article>
-      </section>
-    </main>
-
-    <footer>
-      © <span id="year"></span> ANNANT PUNDIR · Built with focus on Cybersecurity & Learning
-    </footer>
-  </div>
-
-  <!-- ============ BIG INFO MODAL ============ -->
-  <div class="info-modal" id="infoModal">
-    <div class="info-modal-backdrop" id="infoModalBackdrop"></div>
-    <div class="info-modal-content" id="infoModalContent">
-      <button class="modal-close" id="modalCloseBtn">&times;</button>
-      <h2 class="info-modal-title" id="modalTitle">Title</h2>
-      <div class="info-modal-body" id="modalBody">
-        <!-- Filled dynamically -->
-      </div>
     </div>
+
+  </header>
+
+  <main>
+
+    <div class="card"
+         onclick="openPopup('Professional Summary',
+         'Second-year Cybersecurity student at VIT University with interests in backend development, AI applications, Linux systems, and modern web technologies. Currently improving skills in C++, Python, networking, and system security through continuous learning and practical projects.')">
+
+      <h2>Professional Summary</h2>
+
+      <p>
+        Second-year Cybersecurity student at VIT University with interests in backend development, AI applications, Linux systems, and modern web technologies.
+      </p>
+
+    </div>
+
+    <div class="card"
+         onclick="openPopup('Technical Competencies',
+         'Programming Languages: C++, Python | Web Development: HTML & CSS | Cybersecurity: Networking Basics & System Security Fundamentals | Tools: GitHub, Linux, VS Code | Core Areas: Backend Development, AI Applications, Problem Solving.')">
+
+      <h2>Technical Competencies</h2>
+
+      <p>
+        C++, Python, HTML, CSS, Linux, GitHub, Networking Basics, Backend Development, and AI Applications.
+      </p>
+
+    </div>
+
+    <div class="card"
+         onclick="openPopup('Current Projects',
+         'Building and improving a personal portfolio website using GitHub Pages. Learning backend development concepts with C++ and Python. Exploring Linux environments and networking fundamentals. Experimenting with AI-based applications and automation ideas.')">
+
+      <h2>Current Projects</h2>
+
+      <p>
+        Building a personal portfolio website, learning backend development concepts, exploring Linux environments, and experimenting with AI-based applications.
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <h2>Verified Credentials</h2>
+
+      <div class="certificate">
+
+        <div>
+          <h4>Cybersecurity</h4>
+          <p>Coursera</p>
+        </div>
+
+        <a href="https://coursera.org/share/9146f9db86370011d5f5e2e98f8314f3"
+           class="verify-btn"
+           target="_blank">
+           Verify
+        </a>
+
+      </div>
+
+      <div class="certificate">
+
+        <div>
+          <h4>AI & Machine Learning</h4>
+          <p>VITYARTHI</p>
+        </div>
+
+        <a href="https://vityarthi.com/certificate/kjYl28ZMHioQ"
+           class="verify-btn"
+           target="_blank">
+           Verify
+        </a>
+
+      </div>
+      
+      <div class="certificate">
+
+        <div>
+          <h4>Python</h4>
+          <p>VITYARTHI</p>
+        </div>
+
+        <a href="https://admin.vityarthi.com/certificate/w2lUkLibEHfq"
+           class="verify-btn"
+           target="_blank">
+           Verify
+        </a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+
+    <div>
+      © 2026 Annant Pundir
+    </div>
+
+    <div>
+      Cybersecurity & Software Development
+    </div>
+
+  </footer>
+
+</div>
+
+<div class="popup" id="popup">
+
+  <div class="popup-content">
+
+    <span class="close" onclick="closePopup()">
+      &times;
+    </span>
+
+    <h2 id="popupTitle"></h2>
+
+    <p id="popupText"></p>
+
   </div>
 
-  <!-- ===== SCRIPT ===== -->
-  <script>
-    const PASSWORD = "annant123";
+</div>
 
-    const editableFields = document.querySelectorAll("[data-key]");
-    const loginBtn = document.getElementById("loginBtn");
-    const toggleEditBtn = document.getElementById("toggleEditBtn");
-    const saveBtn = document.getElementById("saveBtn");
-    const clearBtn = document.getElementById("clearBtn");
-    const yearSpan = document.getElementById("year");
-    const editStateLabel = document.getElementById("editStateLabel");
+<script>
 
-    const profilePhoto = document.getElementById("profilePhoto");
-    const profilePhotoInput = document.getElementById("profilePhotoInput");
+  function openPopup(title,text){
+    document.getElementById("popup").style.display="flex";
+    document.getElementById("popupTitle").innerText=title;
+    document.getElementById("popupText").innerText=text;
+  }
 
-    const certInput = document.getElementById("certInput");
-    const certList = document.getElementById("certList");
+  function closePopup(){
+    document.getElementById("popup").style.display="none";
+  }
 
-    const infoCards = document.querySelectorAll(".info-card");
-    const infoModal = document.getElementById("infoModal");
-    const infoModalBackdrop = document.getElementById("infoModalBackdrop");
-    const modalCloseBtn = document.getElementById("modalCloseBtn");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalBody = document.getElementById("modalBody");
-    const infoModalContent = document.getElementById("infoModalContent");
-
-    let isAdmin = false;
-    let editMode = false;
-
-    yearSpan.textContent = new Date().getFullYear();
-
-    /* ---- LOCAL STORAGE HELPERS ---- */
-    function loadData() {
-      editableFields.forEach((el) => {
-        const key = el.dataset.key;
-        const stored = localStorage.getItem("portfolio_" + key);
-        if (stored) el.innerHTML = stored;
-      });
-
-      const photoData = localStorage.getItem("portfolio_profilePhoto");
-      if (photoData) {
-        setProfilePhoto(photoData);
-      }
-
-      const certs = JSON.parse(localStorage.getItem("portfolio_certs") || "[]");
-      certs.forEach((c) => addCertToDOM(c.name, c.url));
+  window.onclick=function(e){
+    const popup=document.getElementById("popup");
+    if(e.target==popup){
+      popup.style.display="none";
     }
+  }
 
-    function saveData() {
-      editableFields.forEach((el) => {
-        const key = el.dataset.key;
-        localStorage.setItem("portfolio_" + key, el.innerHTML);
-      });
-      alert("Changes successfully saved to local browser storage.");
-    }
+</script>
 
-    function clearData() {
-      if (!confirm("Are you sure you want to clear all saved data? This cannot be undone.")) return;
-      Object.keys(localStorage)
-        .filter((k) => k.startsWith("portfolio_"))
-        .forEach((k) => localStorage.removeItem(k));
-      location.reload();
-    }
-
-    /* ---- EDIT MODE ---- */
-    function setEditMode(on) {
-      editMode = on;
-      document.body.classList.toggle("edit-mode", on);
-      editableFields.forEach((el) => (el.contentEditable = on ? "true" : "false"));
-      editStateLabel.textContent = on ? "ON" : "OFF";
-    }
-
-    loginBtn.addEventListener("click", () => {
-      if (isAdmin) {
-        isAdmin = false;
-        setEditMode(false);
-        loginBtn.textContent = "Admin Login";
-        toggleEditBtn.style.display = "none";
-        saveBtn.style.display = "none";
-        clearBtn.style.display = "none";
-        return;
-      }
-
-      const input = prompt("Enter admin password:");
-      if (input === PASSWORD) {
-        isAdmin = true;
-        loginBtn.textContent = "Logout Admin";
-        toggleEditBtn.style.display = "inline-flex";
-        saveBtn.style.display = "inline-flex";
-        clearBtn.style.display = "inline-flex";
-      } else if (input !== null) {
-        alert("Incorrect password.");
-      }
-    });
-
-    toggleEditBtn.addEventListener("click", () => setEditMode(!editMode));
-    saveBtn.addEventListener("click", saveData);
-    clearBtn.addEventListener("click", clearData);
-
-    /* ---- PROFILE PHOTO ---- */
-    function setProfilePhoto(dataUrl) {
-      profilePhoto.innerHTML = "";
-      const img = document.createElement("img");
-      img.src = dataUrl;
-      profilePhoto.appendChild(img);
-    }
-
-    profilePhotoInput.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const dataUrl = event.target.result;
-        setProfilePhoto(dataUrl);
-        localStorage.setItem("portfolio_profilePhoto", dataUrl);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    /* ---- CERTIFICATES ---- */
-    function addCertToDOM(name, url) {
-      const item = document.createElement("div");
-      item.className = "cert-item";
-      
-      const nameSpan = document.createElement("span");
-      nameSpan.textContent = name;
-      nameSpan.title = name;
-
-      const link = document.createElement("a");
-      link.href = url;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.textContent = "View";
-
-      item.appendChild(nameSpan);
-      item.appendChild(link);
-      certList.appendChild(item);
-    }
-
-    function saveCertsToStorage() {
-      const items = certList.querySelectorAll(".cert-item");
-      const certsToSave = [];
-      items.forEach((item) => {
-        const name = item.querySelector("span").textContent;
-        const href = item.querySelector("a").href;
-        certsToSave.push({ name, url: href });
-      });
-      localStorage.setItem("portfolio_certs", JSON.stringify(certsToSave));
-    }
-
-    certInput.addEventListener("change", (e) => {
-      const files = Array.from(e.target.files);
-      files.forEach((file) => {
-        const url = URL.createObjectURL(file);
-        addCertToDOM(file.name, url);
-      });
-      saveCertsToStorage();
-      e.target.value = "";
-    });
-
-    /* ---- SCROLL ANIMATIONS ---- */
-    const animSections = document.querySelectorAll(".anim-section");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("anim-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    animSections.forEach((sec) => observer.observe(sec));
-
-    /* ---- MODAL HANDLING ---- */
-    function openInfoModalFromCard(card) {
-      const titleEl = card.querySelector(".card-title");
-      const contentEl = card.querySelector(".card-content");
-      if (!titleEl || !contentEl) return;
-
-      modalTitle.textContent = titleEl.textContent;
-      modalBody.innerHTML = contentEl.innerHTML;
-      infoModal.classList.add("open");
-    }
-
-    function closeInfoModal() {
-      infoModal.classList.remove("open");
-    }
-
-    infoCards.forEach((card) => {
-      card.addEventListener("click", (e) => {
-        if (editMode || e.target.tagName === "INPUT" || e.target.tagName === "A" || e.target.closest("label")) {
-          return;
-        }
-        openInfoModalFromCard(card);
-      });
-    });
-
-    modalCloseBtn.addEventListener("click", closeInfoModal);
-    infoModalBackdrop.addEventListener("click", closeInfoModal);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeInfoModal();
-    });
-
-    loadData();
-  </script>
 </body>
 </html>
