@@ -3,461 +3,294 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Annant Pundir | Portfolio</title>
-
+  <meta name="description" content="Annant Pundir - Second-year Cybersecurity student at VIT, Full Stack Developer (MERN), DSA & Backend Enthusiast. Open to Remote Internships." />
+  <title>Annant Pundir | Full Stack Developer & Cybersecurity Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root{
       --bg:#0b0f19;
       --card:#111827;
+      --card-hover:#151e32;
       --border:#1f2937;
       --text:#f8fafc;
       --muted:#94a3b8;
       --accent:#3b82f6;
+      --accent2:#22d3ee;
+      --success:#10b981;
     }
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box;}
     body{
-      /* Dark overlay + Tech Background Image */
-      background: linear-gradient(rgba(11, 15, 25, 0.85), rgba(17, 24, 39, 0.95)), 
-                  url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      
-      font-family:Arial, sans-serif;
-      color:var(--text);
-      line-height:1.6;
+      background: linear-gradient(rgba(11,15,25,0.88), rgba(17,24,39,0.96)), url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover; background-position:center; background-attachment:fixed;
+      font-family:'Inter', system-ui, -apple-system, sans-serif;
+      color:var(--text); line-height:1.6;
     }
-
-    .container{
-      width:90%;
-      max-width:1100px;
-      margin:auto;
-      padding:40px 0;
+    .container{width:90%; max-width:1100px; margin:auto; padding:30px 0 40px;}
+    /* NAV */
+    nav{
+      display:flex; justify-content:space-between; align-items:center;
+      padding:14px 0; margin-bottom:30px; border-bottom:1px solid var(--border);
+      position:sticky; top:0; backdrop-filter:blur(12px); background:rgba(11,15,25,0.7); z-index:10;
     }
-
+    nav .logo{font-weight:700; letter-spacing:1px; font-size:1rem;}
+    nav .logo span{color:var(--accent);}
+    nav .nav-links{display:flex; gap:18px; font-size:0.85rem;}
+    nav .nav-links a{color:var(--muted); text-decoration:none; transition:0.2s;}
+    nav .nav-links a:hover{color:var(--text);}
+    /* HEADER */
     header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-bottom:50px;
-      border-bottom:1px solid var(--border);
-      padding-bottom:30px;
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:30px;
+      margin-bottom:40px; border-bottom:1px solid var(--border); padding-bottom:35px;
     }
-
-    .profile{
-      display:flex;
-      align-items:center;
-      gap:20px;
-    }
-
+    .profile{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
     .profile-img{
-      width:90px;
-      height:90px;
-      border-radius:12px;
-      background:#1e293b;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:2rem;
-      font-weight:bold;
-      color:var(--accent);
-      border:1px solid var(--border);
+      width:94px; height:94px; border-radius:14px; background:linear-gradient(135deg,#1e293b,#0f172a);
+      display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:700; color:var(--accent); border:1px solid var(--border);
     }
-
-    .profile-info h1{
-      font-size:2.2rem;
-      margin-bottom:5px;
+    .profile-info h1{font-size:2.3rem; line-height:1.1; margin-bottom:6px;}
+    .badge{
+      display:inline-flex; align-items:center; gap:6px; font-size:0.75rem; padding:5px 10px; border-radius:999px;
+      background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); color:#6ee7b7; margin-bottom:10px;
+      font-family:'JetBrains Mono', monospace;
     }
-
-    .profile-info p{
-      color:var(--muted);
-    }
-
-    .buttons{
-      margin-top:15px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:10px 18px;
-      border-radius:8px;
-      text-decoration:none;
-      font-size:0.9rem;
-      transition:0.3s;
-      border:1px solid var(--border);
-    }
-
-    .btn-primary{
-      background:var(--accent);
-      color:white;
-    }
-
-    .btn-primary:hover{
-      background:#2563eb;
-    }
-
-    .btn-outline{
-      color:white;
-    }
-
-    .btn-outline:hover{
-      border-color:var(--accent);
-      background:rgba(59,130,246,0.1);
-    }
-
-    main{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-      gap:25px;
-    }
-
+    .badge-dot{width:7px; height:7px; border-radius:50%; background:var(--success); box-shadow:0 0 8px var(--success); animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    .profile-info .subtitle{color:var(--muted); font-size:0.98rem; max-width:620px;}
+    .profile-info .subtitle strong{color:#cbd5e1; font-weight:600;}
+    .buttons{margin-top:16px; display:flex; gap:12px; flex-wrap:wrap;}
+    .btn{padding:10px 18px; border-radius:8px; text-decoration:none; font-size:0.88rem; transition:0.25s; border:1px solid var(--border); font-weight:500;}
+    .btn-primary{background:var(--accent); color:white; border-color:var(--accent);}
+    .btn-primary:hover{background:#2563eb; transform:translateY(-1px);}
+    .btn-outline{color:white; background:rgba(255,255,255,0.04);}
+    .btn-outline:hover{border-color:var(--accent); background:rgba(59,130,246,0.12);}
+    /* GRID */
+    main{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px;}
     .card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:28px;
-      transition:0.3s;
-      cursor:pointer;
+      background:var(--card); border:1px solid var(--border); border-radius:16px; padding:26px; transition:0.3s; cursor:pointer;
     }
-
-    .card:hover{
-      transform:translateY(-5px);
-      border-color:var(--accent);
-      box-shadow:0 10px 25px rgba(59,130,246,0.15);
+    .card:hover{transform:translateY(-4px); border-color:rgba(59,130,246,0.4); box-shadow:0 10px 30px rgba(59,130,246,0.12); background:var(--card-hover);}
+    .card.full{grid-column:1/-1; cursor:default;}
+    .card.full:hover{transform:none;}
+    .card h2{font-size:0.85rem; letter-spacing:1.2px; margin-bottom:14px; color:var(--accent); text-transform:uppercase; font-weight:700;}
+    .card p,.card li{color:#d1d5db; font-size:0.92rem;}
+    ul{list-style:none;} li{margin-bottom:10px; display:flex; gap:8px;}
+    li::before{content:"▹"; color:var(--accent); font-weight:700;}
+    /* TAGS */
+    .stack-group{margin-bottom:18px;}
+    .stack-group h4{font-size:0.78rem; letter-spacing:0.8px; color:var(--muted); text-transform:uppercase; margin-bottom:8px;}
+    .tags{display:flex; flex-wrap:wrap; gap:8px;}
+    .tag{
+      font-size:0.78rem; padding:6px 11px; border-radius:999px; border:1px solid var(--border);
+      background:rgba(255,255,255,0.04); color:#e2e8f0; font-family:'JetBrains Mono', monospace;
     }
-
-    .card h2{
-      font-size:1rem;
-      letter-spacing:1px;
-      margin-bottom:18px;
-      color:var(--accent);
-      text-transform:uppercase;
+    .tag.frontend{border-color:rgba(59,130,246,0.35); background:rgba(59,130,246,0.1);}
+    .tag.backend{border-color:rgba(16,185,129,0.35); background:rgba(16,185,129,0.1);}
+    .tag.db{border-color:rgba(249,115,22,0.35); background:rgba(249,115,22,0.1);}
+    .tag.tool{border-color:rgba(168,85,247,0.35); background:rgba(168,85,247,0.1);}
+    .tag.learning{border-style:dashed; opacity:0.85;}
+    /* TIMELINE */
+    .timeline{border-left:1px solid var(--border); margin-left:8px; padding-left:20px;}
+    .tl-item{position:relative; margin-bottom:16px;}
+    .tl-item::before{content:""; position:absolute; left:-26px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--accent); border:2px solid var(--card); box-shadow:0 0 0 2px var(--accent);}
+    .tl-item.done::before{background:var(--success); box-shadow:0 0 0 2px var(--success);}
+    .tl-item h4{font-size:0.9rem; margin-bottom:2px;}
+    .tl-item p{font-size:0.82rem; color:var(--muted);}
+    /* PROJECTS */
+    .project{
+      padding:14px; border:1px solid var(--border); border-radius:10px; margin-bottom:12px; background:rgba(255,255,255,0.02); transition:0.2s;
     }
-
-    .card p,
-    .card li{
-      color:#d1d5db;
-      font-size:0.95rem;
-    }
-
-    ul{
-      list-style:none;
-    }
-
-    li{
-      margin-bottom:12px;
-    }
-
+    .project:hover{border-color:rgba(59,130,246,0.3); background:rgba(59,130,246,0.05);}
+    .project h4{font-size:0.95rem; margin-bottom:4px; display:flex; justify-content:space-between; align-items:center; gap:10px;}
+    .project p{font-size:0.82rem; color:var(--muted); margin-bottom:8px;}
+    .project-links{display:flex; gap:8px; flex-wrap:wrap;}
+    .mini-btn{font-size:0.72rem; padding:5px 10px; border-radius:6px; border:1px solid var(--border); text-decoration:none; color:var(--text); background:rgba(255,255,255,0.03);}
+    .mini-btn:hover{border-color:var(--accent); color:white;}
+    .status{font-size:0.68rem; padding:3px 8px; border-radius:999px; font-family:'JetBrains Mono', monospace; white-space:nowrap;}
+    .status.live{background:rgba(16,185,129,0.15); color:#6ee7b7; border:1px solid rgba(16,185,129,0.3);}
+    .status.wip{background:rgba(251,191,36,0.15); color:#fde68a; border:1px solid rgba(251,191,36,0.3);}
     /* CERTIFICATES */
-
-    .certificate{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:15px;
-      border:1px solid var(--border);
-      border-radius:10px;
-      margin-bottom:15px;
-      background:rgba(255,255,255,0.02);
-    }
-
-    .certificate h4{
-      margin-bottom:4px;
-    }
-
-    .certificate p{
-      font-size:0.8rem;
-      color:var(--muted);
-    }
-
-    .verify-btn{
-      padding:8px 14px;
-      border-radius:6px;
-      border:1px solid var(--border);
-      text-decoration:none;
-      color:white;
-      font-size:0.85rem;
-      transition:0.3s;
-    }
-
-    .verify-btn:hover{
-      background:rgba(59,130,246,0.1);
-      border-color:var(--accent);
-    }
-
-    footer{
-      margin-top:60px;
-      padding-top:20px;
-      border-top:1px solid var(--border);
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      color:var(--muted);
-      font-size:0.85rem;
-    }
-
+    .certificate{display:flex; justify-content:space-between; align-items:center; padding:14px; border:1px solid var(--border); border-radius:10px; margin-bottom:12px; background:rgba(255,255,255,0.02);}
+    .certificate h4{margin-bottom:2px; font-size:0.92rem;} .certificate p{font-size:0.78rem; color:var(--muted);}
+    .verify-btn{padding:7px 12px; border-radius:6px; border:1px solid var(--border); text-decoration:none; color:white; font-size:0.8rem; transition:0.2s;}
+    .verify-btn:hover{background:rgba(59,130,246,0.12); border-color:var(--accent);}
+    footer{margin-top:55px; padding-top:18px; border-top:1px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:var(--muted); font-size:0.82rem;}
     /* POPUP */
-
-    .popup{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.7);
-      backdrop-filter:blur(5px);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:1000;
-    }
-
-    .popup-content{
-      background:#111827;
-      width:90%;
-      max-width:700px;
-      border-radius:18px;
-      padding:35px;
-      border:1px solid var(--border);
-      animation:popup 0.3s ease;
-      position:relative;
-    }
-
-    @keyframes popup{
-      from{
-        opacity:0;
-        transform:scale(0.8);
-      }
-      to{
-        opacity:1;
-        transform:scale(1);
-      }
-    }
-
-    .close{
-      position:absolute;
-      top:15px;
-      right:20px;
-      font-size:1.5rem;
-      cursor:pointer;
-      color:var(--muted);
-    }
-
-    .close:hover{
-      color:white;
-    }
-
-    #popupTitle{
-      color:var(--accent);
-      margin-bottom:15px;
-    }
-
-    #popupText{
-      color:#d1d5db;
-      line-height:1.8;
-    }
-
+    .popup{position:fixed; inset:0; background:rgba(0,0,0,0.68); backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center; z-index:1000; padding:20px;}
+    .popup-content{background:#111827; width:100%; max-width:700px; border-radius:16px; padding:30px; border:1px solid var(--border); animation:popup 0.28s ease; position:relative; max-height:85vh; overflow:auto;}
+    @keyframes popup{from{opacity:0; transform:scale(0.92)} to{opacity:1; transform:scale(1)}}
+    .close{position:absolute; top:12px; right:16px; font-size:1.5rem; cursor:pointer; color:var(--muted);} .close:hover{color:white;}
+    #popupTitle{color:var(--accent); margin-bottom:12px; font-size:1.2rem;}
+    #popupText{color:#d1d5db; line-height:1.75; font-size:0.93rem; white-space:pre-line;}
   </style>
 </head>
-
 <body>
-
 <div class="container">
+  <nav>
+    <div class="logo">AP<span>.DEV</span></div>
+    <div class="nav-links">
+      <a href="#stack">Stack</a>
+      <a href="#projects">Projects</a>
+      <a href="#journey">Journey</a>
+      <a href="mailto:annantpundir43@gmail.com">Contact</a>
+    </div>
+  </nav>
 
   <header>
-
     <div class="profile">
-
-      <div class="profile-img">
-        AP
-      </div>
-
+      <div class="profile-img">AP</div>
       <div class="profile-info">
-
+        <div class="badge"><span class="badge-dot"></span> Open to Remote Internships • Full Stack</div>
         <h1>ANNANT PUNDIR</h1>
-
-        <p>
-          Second-year Cybersecurity student at VIT University | Backend Development | AI & Linux Enthusiast
+        <p class="subtitle">
+          Second-year <strong>Cybersecurity</strong> student at <strong>VIT University</strong> — now building as a <strong>Full Stack Developer (MERN)</strong>. 
+          Focused on <strong>DSA in C++</strong>, clean backend APIs & shipping real projects in 90 days.
         </p>
-
-        <p>
-          Email: annantpundir43@gmail.com
-        </p>
-
+        <p style="color:var(--muted); font-size:0.85rem; margin-top:4px;">📍 VIT University &nbsp;•&nbsp; ✉️ annantpundir43@gmail.com</p>
         <div class="buttons">
-
-          <a href="#" class="btn btn-primary">
-            Download Resume
-          </a>
-
-          <a href="https://github.com/annantpundir43-blip"
-             target="_blank"
-             class="btn btn-outline">
-             GitHub Profile
-          </a>
-
-          <a href="https://www.linkedin.com/in/annant-pundir-1467453ba/"
-             target="_blank"
-             class="btn btn-outline">
-             LinkedIn
-          </a>
-
+          <a href="#" class="btn btn-primary">Download Resume</a>
+          <a href="https://github.com/annantpundir43-blip" target="_blank" class="btn btn-outline">GitHub</a>
+          <a href="https://www.linkedin.com/in/annant-pundir-1467453ba/" target="_blank" class="btn btn-outline">LinkedIn</a>
+          <a href="mailto:annantpundir43@gmail.com" class="btn btn-outline">Email Me</a>
         </div>
-
       </div>
-
     </div>
-
   </header>
 
   <main>
+    <!-- FULL STACK STACK - FULL WIDTH -->
+    <div class="card full" id="stack">
+      <h2>⚡ Full Stack Tech Stack — What I'm Building With</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px;">
+        <div class="stack-group">
+          <h4>Frontend</h4>
+          <div class="tags">
+            <span class="tag frontend">HTML5</span>
+            <span class="tag frontend">CSS3</span>
+            <span class="tag frontend">JavaScript (ES6+)</span>
+            <span class="tag frontend">React</span>
+            <span class="tag frontend learning">Next.js — learning</span>
+            <span class="tag frontend">Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h4>Backend</h4>
+          <div class="tags">
+            <span class="tag backend">Node.js</span>
+            <span class="tag backend">Express.js</span>
+            <span class="tag backend">Python</span>
+            <span class="tag backend">C++ (DSA)</span>
+            <span class="tag backend learning">REST APIs</span>
+            <span class="tag backend learning">Auth (JWT)</span>
+          </div>
+        </div>
+        <div class="stack-group">
+          <h4>Database & Tools</h4>
+          <div class="tags">
+            <span class="tag db">MongoDB</span>
+            <span class="tag db learning">MySQL</span>
+            <span class="tag tool">Git & GitHub</span>
+            <span class="tag tool">Linux</span>
+            <span class="tag tool">VS Code</span>
+            <span class="tag tool">Vercel / Netlify</span>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:14px; font-size:0.82rem; color:var(--muted); font-family:'JetBrains Mono', monospace;">Currently: JavaScript30 + Frontend Mentor → Harkirat 100xDevs MERN → Deploy 3 full-stack projects for internship portfolio</p>
+    </div>
 
-    <div class="card"
-         onclick="openPopup('Professional Summary',
-         'Second-year Cybersecurity student at VIT University with interests in backend development, AI applications, Linux systems, and modern web technologies. Currently improving skills in C++, Python, networking, and system security through continuous learning and practical projects.')">
-
+    <div class="card" onclick="openPopup('Professional Summary', 'Second-year Cybersecurity student at VIT University transitioning into Full Stack Development.\n\nWhat I do:\n• Frontend: Building responsive, accessible UIs with HTML, CSS, JavaScript, React & Tailwind\n• Backend: Designing REST APIs with Node.js + Express, working with MongoDB\n• DSA: Daily practice in C++ (Arrays, Hashing, Two Pointers, Sliding Window, Stack/Queue, Binary Search) — 70% of internship OAs\n• Security mindset: Networking basics, Linux, system security fundamentals applied to web apps\n\nGoal (Next 90 days): Ship 3 deployed full-stack projects + 120 DSA problems + 30 applications/week → Remote Internship (SDE / Frontend / Full Stack).')">
       <h2>Professional Summary</h2>
-
-      <p>
-        Second-year Cybersecurity student at VIT University with interests in backend development, AI applications, Linux systems, and modern web technologies.
-      </p>
-
+      <p>Cybersecurity student turning <strong>Full Stack Developer</strong>. Building MERN apps with a security-first mindset — DSA daily in C++, shipping projects, not tutorials.</p>
+      <p style="margin-top:10px; color:var(--accent); font-size:0.82rem; font-weight:600;">Click to read more →</p>
     </div>
 
-    <div class="card"
-         onclick="openPopup('Technical Competencies',
-         'Programming Languages: C++, Python | Web Development: HTML & CSS | Cybersecurity: Networking Basics & System Security Fundamentals | Tools: GitHub, Linux, VS Code | Core Areas: Backend Development, AI Applications, Problem Solving.')">
-
-      <h2>Technical Competencies</h2>
-
-      <p>
-        C++, Python, HTML, CSS, Linux, GitHub, Networking Basics, Backend Development, and AI Applications.
-      </p>
-
+    <div class="card" onclick="openPopup('Full Stack Learning Journey', 'My 90-Day Roadmap (Section A+B+C):\n\nWEEKS 1-4: Frontend Foundations\n• JavaScript30 (30 vanilla JS projects) — done daily\n• Frontend Mentor — 4 designs built from Figma, no tutorial\n• DSA: Arrays, Hashing, Two Pointers\n\nWEEKS 5-8: MERN Core\n• Harkirat 100xDevs — React → Node → Express → MongoDB → Deploy\n• Alternative: The Odin Project (if you prefer text)\n• DSA: Sliding Window, Stack/Queue, Binary Search\n• Projects: Task Manager API, Auth system\n\nWEEKS 9-12: Ship & Apply\n• 3 Portfolio Projects deployed (Vercel)\n• Jake’s ATS Resume + Striver 79 (last 14 days)\n• 30 applications/week — Internshala + LinkedIn + Wellfound\n• Mock interviews & system design basics')">
+      <h2 id="journey">Current Focus — 90 Days to Internship</h2>
+      <div class="timeline">
+        <div class="tl-item done">
+          <h4>Frontend Foundations ✓</h4>
+          <p>HTML/CSS/JS • JavaScript30 • Frontend Mentor (1/4 done)</p>
+        </div>
+        <div class="tl-item">
+          <h4>MERN Stack — In Progress</h4>
+          <p>React → Node.js → Express → MongoDB (Harkirat 100xDevs)</p>
+        </div>
+        <div class="tl-item">
+          <h4>Ship & Apply — Next</h4>
+          <p>3 deployed projects • 30 apps/week • Striver 79</p>
+        </div>
+      </div>
     </div>
 
-    <div class="card"
-         onclick="openPopup('Current Projects',
-         'Building and improving a personal portfolio website using GitHub Pages. Learning backend development concepts with C++ and Python. Exploring Linux environments and networking fundamentals. Experimenting with AI-based applications and automation ideas.')">
-
-      <h2>Current Projects</h2>
-
-      <p>
-        Building a personal portfolio website, learning backend development concepts, exploring Linux environments, and experimenting with AI-based applications.
-      </p>
-
+    <div class="card" id="projects" style="cursor:default;">
+      <h2>Featured Projects — Full Stack</h2>
+      <div class="project">
+        <h4>Portfolio v2 — This Site <span class="status live">● Live</span></h4>
+        <p>Responsive dark-theme portfolio. Built with HTML/CSS/JS. Deployed on GitHub Pages. Next: migrate to React + Tailwind.</p>
+        <div class="tags" style="margin-bottom:8px;"><span class="tag frontend" style="font-size:0.7rem;">HTML</span><span class="tag frontend" style="font-size:0.7rem;">CSS</span><span class="tag frontend" style="font-size:0.7rem;">JavaScript</span></div>
+        <div class="project-links">
+          <a href="https://github.com/annantpundir43-blip" target="_blank" class="mini-btn">GitHub ↗</a>
+          <a href="#" class="mini-btn">Live Demo ↗</a>
+        </div>
+      </div>
+      <div class="project">
+        <h4>TaskFlow API — MERN Tasks <span class="status wip">WIP</span></h4>
+        <p>Full-stack task manager: React frontend + Express REST API + MongoDB + JWT auth. CRUD, filters, deploy on Vercel.</p>
+        <div class="tags" style="margin-bottom:8px;"><span class="tag frontend" style="font-size:0.7rem;">React</span><span class="tag backend" style="font-size:0.7rem;">Express</span><span class="tag db" style="font-size:0.7rem;">MongoDB</span></div>
+        <div class="project-links"><a href="#" class="mini-btn">Coming Soon</a></div>
+      </div>
+      <div class="project">
+        <h4>DSA Tracker — Arrays & Patterns <span class="status wip">WIP</span></h4>
+        <p>C++ solutions for 70 high-yield problems (Arrays, Two Pointers, Sliding Window). Auto-synced from LeetCode style — for internship OAs.</p>
+        <div class="tags" style="margin-bottom:8px;"><span class="tag backend" style="font-size:0.7rem;">C++</span><span class="tag tool" style="font-size:0.7rem;">DSA</span></div>
+        <div class="project-links"><a href="https://github.com/annantpundir43-blip" target="_blank" class="mini-btn">View Code ↗</a></div>
+      </div>
+      <p style="font-size:0.75rem; color:var(--muted); margin-top:6px; font-family:'JetBrains Mono', monospace;">+ 1 more in ideation — Florin Pop App Ideas → solo build without tutorial</p>
     </div>
 
     <div class="card">
-
       <h2>Verified Credentials</h2>
-
       <div class="certificate">
-
-        <div>
-          <h4>Cybersecurity</h4>
-          <p>Coursera</p>
-        </div>
-
-        <a href="https://coursera.org/share/9146f9db86370011d5f5e2e98f8314f3"
-           class="verify-btn"
-           target="_blank">
-           Verify
-        </a>
-
+        <div><h4>Cybersecurity</h4><p>Coursera</p></div>
+        <a href="https://coursera.org/share/9146f9db86370011d5f5e2e98f8314f3" class="verify-btn" target="_blank">Verify</a>
       </div>
-
       <div class="certificate">
-
-        <div>
-          <h4>AI & Machine Learning</h4>
-          <p>VITYARTHI</p>
-        </div>
-
-        <a href="https://vityarthi.com/certificate/kjYl28ZMHioQ"
-           class="verify-btn"
-           target="_blank">
-           Verify
-        </a>
-
+        <div><h4>AI & Machine Learning</h4><p>VITYARTHI</p></div>
+        <a href="https://vityarthi.com/certificate/kjYl28ZMHioQ" class="verify-btn" target="_blank">Verify</a>
       </div>
-      
       <div class="certificate">
-
-        <div>
-          <h4>Python</h4>
-          <p>VITYARTHI</p>
-        </div>
-
-        <a href="https://admin.vityarthi.com/certificate/w2lUkLibEHfq"
-           class="verify-btn"
-           target="_blank">
-           Verify
-        </a>
-
+        <div><h4>Python</h4><p>VITYARTHI</p></div>
+        <a href="https://admin.vityarthi.com/certificate/w2lUkLibEHfq" class="verify-btn" target="_blank">Verify</a>
       </div>
-
     </div>
-
   </main>
 
   <footer>
-
-    <div>
-      © 2026 Annant Pundir
-    </div>
-
-    <div>
-      Cybersecurity & Software Development
-    </div>
-
+    <div>© 2026 Annant Pundir — Built for internships, not just grades.</div>
+    <div>Full Stack • DSA • Cybersecurity</div>
   </footer>
-
 </div>
 
 <div class="popup" id="popup">
-
   <div class="popup-content">
-
-    <span class="close" onclick="closePopup()">
-      &times;
-    </span>
-
+    <span class="close" onclick="closePopup()">&times;</span>
     <h2 id="popupTitle"></h2>
-
     <p id="popupText"></p>
-
   </div>
-
 </div>
 
 <script>
-
   function openPopup(title,text){
     document.getElementById("popup").style.display="flex";
     document.getElementById("popupTitle").innerText=title;
     document.getElementById("popupText").innerText=text;
   }
-
-  function closePopup(){
-    document.getElementById("popup").style.display="none";
-  }
-
+  function closePopup(){document.getElementById("popup").style.display="none";}
   window.onclick=function(e){
     const popup=document.getElementById("popup");
-    if(e.target==popup){
-      popup.style.display="none";
-    }
+    if(e.target==popup) popup.style.display="none";
   }
-
 </script>
-
 </body>
 </html>
